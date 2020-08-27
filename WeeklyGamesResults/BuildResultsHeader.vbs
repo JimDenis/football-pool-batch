@@ -38,7 +38,7 @@ InHomeTeam = ""
 OutCount = 0
 OutLine  = "AWAY                 "
 OutLine2 = "HOME                 "
-OutLine3 = "PLAYER                                                                                        POINTS"
+OutLine3 = "PLAYER                                                                              POINTS"
 
 
  Set fs = CreateObject("Scripting.FileSystemObject")

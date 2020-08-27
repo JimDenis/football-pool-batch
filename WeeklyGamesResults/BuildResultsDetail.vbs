@@ -37,7 +37,7 @@ InCount  = 0
  Set fs = CreateObject("Scripting.FileSystemObject")
 
  Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\EmailPicks", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Results", ForWriting, True)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Headers", ForAppending, True)
 
 Do Until tsi.AtEndOfStream
 
@@ -45,6 +45,7 @@ Do Until tsi.AtEndOfStream
 	InCount = InCount + 1
 
 	WhereIsAt = InStr(InEmail," is ")
+	IsItNew = InStr(InEmail,"Pick")
 
 	If WhereIsAt > 0 Then
 		WhereIsAt = WhereIsAt + 4
@@ -54,7 +55,7 @@ Do Until tsi.AtEndOfStream
 	If WhereIsAt = 14 Then
 		Disp = Len(TeamIn)
 		WScript.Echo Disp
-		Diff = 22 - Disp
+		Diff = 21 - Disp
 		Filler = String(Diff," ")
 		OutLine = OutLine + TeamIn + Filler
 		WhereIsAt = 10
@@ -84,10 +85,14 @@ Do Until tsi.AtEndOfStream
 
 	End If 
 
-	If WhereIsAt = 0 Then
+	If IsItNew > 0 Then
+		If len(HoldPoints) < 2 Then
+			HoldPoints = " " + HoldPoints
+		End If	
 		OutLine = OutLine + " " + HoldPoints
 		tso.writeLine OutLine
 		OutLine = ""
+		HoldPoints = ""
 	End If
 
 Loop
