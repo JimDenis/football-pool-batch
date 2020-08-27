@@ -1,0 +1,18 @@
+export let weekPS4 = [
+    { num: "1", home: "Jaguars", away: "Falcons", picked: "none" },
+    { num: "2", home: "Lions", away: "Bills", picked: "none" },
+    { num: "3", home: "Bengals", away: "Colts", picked: "none" },
+    { num: "4", home: "Giants", away: "Patriots", picked: "none" },
+    { num: "5", home: "Redskins", away: "Ravens", picked: "none" },
+    { num: "6", home: "Eagles", away: "Jets", picked: "none" },
+    { num: "7", home: "Panthers", away: "Steelers", picked: "none" },
+    { num: "8", home: "Browns", away: "Buccaneers", picked: "none" },
+    { num: "9", home: "Titans", away: "Bears", picked: "none" },
+    { num: "10", home: "Texans", away: "Cowboys", picked: "none" },
+    { num: "11", home: "Chiefs", away: "Packers", picked: "none" },
+    { num: "12", home: "Saints", away: "Dolphins", picked: "none" },
+    { num: "13", home: "Vikings", away: "Seahawks", picked: "none" },
+    { num: "14", home: "Cardinals", away: "Broncos", picked: "none" },
+    { num: "15", home: "49ers", away: "Chargers", picked: "none" },
+    { num: "16", home: "Raiders", away: "Rams", picked: "none" },
+];

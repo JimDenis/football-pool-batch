@@ -1,0 +1,16 @@
+export let week6 = [
+    { num: "1", home: "Bills", away: "Chiefs", picked: "none" },
+    { num: "2", home: "Panthers", away: "Bears", picked: "none" },
+    { num: "3", home: "Colts", away: "Bengals", picked: "none" },
+    { num: "4", home: "Jaguars", away: "Lions", picked: "none" },
+    { num: "5", home: "Vikings", away: "Falcons", picked: "none" },
+    { num: "6", home: "Giants", away: "Redskins", picked: "none" },
+    { num: "7", home: "Eagles", away: "Ravens", picked: "none" },
+    { num: "8", home: "Steelers", away: "Browns", picked: "none" },
+    { num: "9", home: "Titans", away: "Texans", picked: "none" },
+    { num: "10", home: "Broncos", away: "Dolphins", picked: "none" },
+    { num: "11", home: "Chargers", away: "Jets", picked: "none" },
+    { num: "12", home: "Buccaneers", away: "Packers", picked: "none" },
+    { num: "13", home: "49ers", away: "Rams", picked: "none" },
+    { num: "14", home: "Cowboys", away: "Cardinals", picked: "none" },
+];
