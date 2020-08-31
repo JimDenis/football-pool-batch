@@ -37,7 +37,7 @@ InCount  = 0
  Set fs = CreateObject("Scripting.FileSystemObject")
 
  Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\EmailPicks", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Headers", ForAppending, True)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Picks", ForAppending, True)
 
 Do Until tsi.AtEndOfStream
 
@@ -54,7 +54,6 @@ Do Until tsi.AtEndOfStream
 
 	If WhereIsAt = 14 Then
 		Disp = Len(TeamIn)
-		WScript.Echo Disp
 		Diff = 21 - Disp
 		Filler = String(Diff," ")
 		OutLine = OutLine + TeamIn + Filler
@@ -63,7 +62,6 @@ Do Until tsi.AtEndOfStream
 
 	If WhereIsAt = 27 Then
 		Disp = Len(TeamIn)
-		WScript.Echo Disp
 		HoldPoints = TeamIn 
 		WhereIsAt = 10
 	End If
