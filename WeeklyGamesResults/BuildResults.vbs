@@ -39,7 +39,7 @@ InCount  = 0
  Set fs = CreateObject("Scripting.FileSystemObject")
 
  Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Picks", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Results", ForAppending, True)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Results", ForWriting, True)
 
 InPicks = tsi.ReadLine
 
@@ -57,8 +57,10 @@ KeyArrCnt = 0
 Do Until KeyAtEnd = "Y"
 	InTeam = Mid(InPicks,PosCount,3)  
 
-	If InTeam = "   " Then
-		KeyAtEnd = "Y"	
+	if IsNumeric(InTeam) Then
+		WScript.Echo "Is Numeric"
+		HoldScore = InTeam
+		KeyAtEnd = "Y"
 	Else
 		KeyArray(KeyArrCnt) = InTeam
 		KeyArrCnt = KeyArrCnt + 1
@@ -66,6 +68,8 @@ Do Until KeyAtEnd = "Y"
 	End If	
 
 Loop
+
+WScript.Echo HoldScore 
 
 InPicks = tsi.ReadLine
 tso.writeLine InPicks
@@ -95,9 +99,46 @@ Do Until KeyAtEnd = "Y"
 		KeyAtEnd = "Y"	
 	Else
 		OutLine = OutLine + KeyArray(KeyArrCnt) + " "
-		tso.writeLine OutLine
+'		tso.writeLine OutLine
 		KeyArrCnt = KeyArrCnt + 1
 	End If	
 
 Loop	
 
+Do Until tsi.AtEndOfStream
+
+	InPicks = tsi.ReadLine
+	tso.writeLine InPicks
+
+		PicksAtEnd = "N"
+		PosCount = 22
+		KeyArrCnt = 0
+		CntWins = 0
+		'OutLine = "12345678901234567890 "
+		OutLine = "Results              "
+		
+		Do Until KeyArrCnt = HoldKeyArrCnt
+
+			InPick = Mid(InPicks,PosCount,3) 
+			If InPick = KeyArray(KeyArrCnt) Then
+				OutLine = OutLine & "WIN "
+				CntWins = CntWins + 1
+			Else
+				OutLine = OutLine & "LSE "
+			End If
+
+			KeyArrCnt = KeyArrCnt + 1 
+			PosCount = PosCount + 4
+		Loop	
+
+		'PosCount = PosCount + 4
+		InPick = Mid(InPicks,PosCount,3) 
+		WScript.Echo "Hold " & HoldScore
+		WScript.Echo "Input " & InPick
+
+		Diff = HoldScore - InPick
+
+		OutLine = OutLine & CntWins & " " & Diff 
+		tso.writeLine OutLine  
+
+Loop

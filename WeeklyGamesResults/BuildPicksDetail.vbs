@@ -84,10 +84,13 @@ Do Until tsi.AtEndOfStream
 	End If 
 
 	If IsItNew > 0 Then
-		If len(HoldPoints) < 2 Then
-			HoldPoints = " " + HoldPoints
+		If len(HoldPoints) = 1 Then
+			HoldPoints = "00" + HoldPoints
 		End If	
-		OutLine = OutLine + " " + HoldPoints
+		If len(HoldPoints) = 2 Then
+			HoldPoints = "0" + HoldPoints
+		End If	
+		OutLine = OutLine + HoldPoints
 		tso.writeLine OutLine
 		OutLine = ""
 		HoldPoints = ""
