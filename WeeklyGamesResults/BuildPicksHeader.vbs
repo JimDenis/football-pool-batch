@@ -105,5 +105,5 @@ tso.writeLine(String(95,"="))
 
 OutLine  = "" 
 
-WScript.Echo "Input  count is " & InCount
-WScript.Echo "Output count is " & OutCount 
+WScript.Echo "Teams Input is " & InCount
+WScript.Echo "Games Output is " & OutCount 

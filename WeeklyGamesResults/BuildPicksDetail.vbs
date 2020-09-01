@@ -89,14 +89,17 @@ Do Until tsi.AtEndOfStream
 		End If	
 		If len(HoldPoints) = 2 Then
 			HoldPoints = "0" + HoldPoints
+		End If
+		If Len(OutLine) > 0 Then	
+			OutLine = OutLine + HoldPoints
+			tso.writeLine OutLine
+			OutCount = OutCount + 1
 		End If	
-		OutLine = OutLine + HoldPoints
-		tso.writeLine OutLine
 		OutLine = ""
 		HoldPoints = ""
 	End If
 
 Loop
 
-WScript.Echo "Input  count is " & InCount
-WScript.Echo "Output count is " & OutCount 
+WScript.Echo "Lines in s " & InCount
+WScript.Echo "Players Out is " & OutCount 

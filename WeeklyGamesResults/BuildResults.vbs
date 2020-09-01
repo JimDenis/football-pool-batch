@@ -35,7 +35,8 @@ Dim vbNo: vbNo=7
 
 InEmail = ""  
 InCount  = 0
-
+OutLine2 = "RESULTS                                                                              WINS DIFF"
+KeyOut = ""
  Set fs = CreateObject("Scripting.FileSystemObject")
 
  Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Picks", ForReading)
@@ -46,6 +47,7 @@ InPicks = tsi.ReadLine
 InName = Mid(InPicks,1,3)
 
 If InName = "Key" Then
+	KeyOut = InPicks
 	InCount = InCount + 1
 Else
 	WScript.Echo "Error key = " + InName	
@@ -77,11 +79,15 @@ tso.writeLine InPicks
 InPicks = tsi.ReadLine
 tso.writeLine InPicks
 
+tso.writeLine KeyOut
+
 InPicks = tsi.ReadLine
 tso.writeLine InPicks
 
 InPicks = tsi.ReadLine
 tso.writeLine InPicks
+
+tso.writeLine OutLine2
 
 InPicks = tsi.ReadLine
 tso.writeLine InPicks
@@ -138,7 +144,9 @@ Do Until tsi.AtEndOfStream
 
 		Diff = HoldScore - InPick
 
-		OutLine = OutLine & CntWins & " " & Diff 
-		tso.writeLine OutLine  
+		OutLine = OutLine & " " & CntWins & "   " & Diff 
+		tso.writeLine OutLine
+
+		tso.writeLine(String(95,"*"))
 
 Loop
