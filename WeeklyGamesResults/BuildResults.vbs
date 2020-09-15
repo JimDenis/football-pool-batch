@@ -37,10 +37,16 @@ InEmail = ""
 InCount  = 0
 OutLine2 = "RESULTS                                                                              WINS DIFF"
 KeyOut = ""
+PlayersIn = 0
+MostWins = 0
+BlankLine = ""
+HoldPlayerName = ""
+WinPlayerName = ""
+
  Set fs = CreateObject("Scripting.FileSystemObject")
 
- Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Picks", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Results", ForWriting, True)
+ Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week1ResultsIn", ForReading)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week1Results", ForWriting, True)
 
 InPicks = tsi.ReadLine
 
@@ -60,7 +66,7 @@ Do Until KeyAtEnd = "Y"
 	InTeam = Mid(InPicks,PosCount,3)  
 
 	if IsNumeric(InTeam) Then
-		WScript.Echo "Is Numeric"
+	'	WScript.Echo "Is Numeric"
 		HoldScore = InTeam
 		KeyAtEnd = "Y"
 	Else
@@ -79,6 +85,7 @@ tso.writeLine InPicks
 InPicks = tsi.ReadLine
 tso.writeLine InPicks
 
+tso.writeLine BlankLine
 tso.writeLine KeyOut
 
 InPicks = tsi.ReadLine
@@ -92,8 +99,8 @@ tso.writeLine OutLine2
 InPicks = tsi.ReadLine
 tso.writeLine InPicks
 
-InPicks = tsi.ReadLine
-tso.writeLine InPicks
+'InPicks = tsi.ReadLine
+'tso.writeLine InPicks
 
 HoldKeyArrCnt = KeyArrCnt
 WScript.Echo "Keys Loaded = " & HoldKeyArrCnt
@@ -114,39 +121,63 @@ Loop
 Do Until tsi.AtEndOfStream
 
 	InPicks = tsi.ReadLine
+	PlayersIn = PlayersIn + 1
+	HoldPlayerName = Mid(Inpicks,1,15)
+
+	tso.writeLine BlankLine
 	tso.writeLine InPicks
 
-		PicksAtEnd = "N"
-		PosCount = 22
-		KeyArrCnt = 0
-		CntWins = 0
-		'OutLine = "12345678901234567890 "
-		OutLine = "Results              "
+	PicksAtEnd = "N"
+	PosCount = 22
+	KeyArrCnt = 0
+	CntWins = 0
+	'OutLine = "12345678901234567890 "
+	OutLine = "Results              "
 		
-		Do Until KeyArrCnt = HoldKeyArrCnt
+	Do Until KeyArrCnt = HoldKeyArrCnt
 
-			InPick = Mid(InPicks,PosCount,3) 
-			If InPick = KeyArray(KeyArrCnt) Then
-				OutLine = OutLine & "WIN "
-				CntWins = CntWins + 1
-			Else
-				OutLine = OutLine & "LSE "
-			End If
-
-			KeyArrCnt = KeyArrCnt + 1 
-			PosCount = PosCount + 4
-		Loop	
-
-		'PosCount = PosCount + 4
 		InPick = Mid(InPicks,PosCount,3) 
-		WScript.Echo "Hold " & HoldScore
-		WScript.Echo "Input " & InPick
+		If InPick = KeyArray(KeyArrCnt) Then
+			OutLine = OutLine & "WIN "
+			CntWins = CntWins + 1
+		Else
+			OutLine = OutLine & "LSE "
+		End If
 
-		Diff = HoldScore - InPick
+		KeyArrCnt = KeyArrCnt + 1 
+		PosCount = PosCount + 4
+	Loop	
 
+	'PosCount = PosCount + 4
+	InPick = Mid(InPicks,PosCount,3) 
+	'WScript.Echo "Hold " & HoldScore
+	'WScript.Echo "Input " & InPick
+
+	Diff = HoldScore - InPick
+	Diff = Abs(Diff)
+ 
+	If CntWins < 10 Then 
+		OutLine = OutLine & "  " & CntWins & "   " & Diff 
+	Else
 		OutLine = OutLine & " " & CntWins & "   " & Diff 
-		tso.writeLine OutLine
+	End If
 
-		tso.writeLine(String(95,"*"))
+	tso.writeLine OutLine
+
+	tso.writeLine(String(95,"*"))
+
+	If CntWins > MostWins Then
+		MostWins = CntWins
+		WinPlayerName = HoldPlayerName 
+	End If	 
 
 Loop
+
+tso.writeLine BlankLine
+tso.writeLine BlankLine
+tso.writeLine BlankLine
+OutLine = "WINNER IS " & WinPlayerName & "  WITH " & MostWins & " WINS " 
+tso.writeLine OutLine
+
+WScript.Echo "Players In = " & PlayersIn
+WScript.Echo "Most Wins = " & MostWins
