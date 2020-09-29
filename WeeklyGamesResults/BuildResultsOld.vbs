@@ -45,8 +45,8 @@ WinPlayerName = ""
 
  Set fs = CreateObject("Scripting.FileSystemObject")
 
- Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week3ResultsIn", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week3Results", ForWriting, True)
+ Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week2ResultsIn", ForReading)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week2Results", ForWriting, True)
 
 InPicks = tsi.ReadLine
 
@@ -152,17 +152,14 @@ Do Until tsi.AtEndOfStream
 	InPick = Mid(InPicks,PosCount,3) 
 	'WScript.Echo "Hold " & HoldScore
 	'WScript.Echo "Input " & InPick
-	tso.writeLine OutLine
-
-	OutLine = ""
 
 	Diff = HoldScore - InPick
 	Diff = Abs(Diff)
  
 	If CntWins < 10 Then 
-		OutLine = "Number of Wins =  " & CntWins & " Points Diff = " & Diff 
+		OutLine = OutLine & "  " & CntWins & "   " & Diff 
 	Else
-		OutLine = "Number of Wins = " & CntWins & " Points Diff = " & Diff  
+		OutLine = OutLine & " " & CntWins & "   " & Diff 
 	End If
 
 	tso.writeLine OutLine
@@ -176,11 +173,6 @@ Do Until tsi.AtEndOfStream
 
 Loop
 
-tso.writeLine BlankLine
-tso.writeLine BlankLine
-tso.writeLine BlankLine
-OutLine = "Number of players " & PlayersIn
-tso.writeLine OutLine
 tso.writeLine BlankLine
 tso.writeLine BlankLine
 tso.writeLine BlankLine

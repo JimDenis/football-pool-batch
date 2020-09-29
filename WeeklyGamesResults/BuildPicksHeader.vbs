@@ -43,8 +43,8 @@ OutLine3 = "PLAYER                                                              
 
  Set fs = CreateObject("Scripting.FileSystemObject")
 
- Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Data\Week1TeamNames", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\WeeklyGamesResults\Week1Picks", ForWriting, True)
+ Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Data\Week3TeamNames", ForReading)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week3Picks", ForWriting, True)
 
 Do Until tsi.AtEndOfStream
 

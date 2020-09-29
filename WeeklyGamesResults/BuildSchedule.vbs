@@ -43,10 +43,10 @@ OutLine3 = "PLAYER                                                              
 
  Set fs = CreateObject("Scripting.FileSystemObject")
 
- Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Data\Week2TeamNames", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week2Schedule", ForWriting, True)
+ Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Data\Week4TeamNames", ForReading)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week4Schedule", ForWriting, True)
 
-OutLine = "                    Welcome to week 2 " 
+OutLine = "                    Welcome to week 4 " 
 tso.writeLine OutLine
 
 OutLine = "" 
