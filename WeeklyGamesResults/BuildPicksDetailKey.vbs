@@ -37,7 +37,7 @@ InCount  = 0
  Set fs = CreateObject("Scripting.FileSystemObject")
 
  Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_pool\WeeklyGamesResults\KeyPicks", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week3ResultsIn", ForAppending, True)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week5ResultsIn", ForAppending, True)
 
 Do Until tsi.AtEndOfStream
 

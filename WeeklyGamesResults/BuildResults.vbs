@@ -45,8 +45,8 @@ WinPlayerName = ""
 
  Set fs = CreateObject("Scripting.FileSystemObject")
 
- Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week3ResultsIn", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week3Results", ForWriting, True)
+ Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week5ResultsIn", ForReading)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week5Results", ForWriting, True)
 
 InPicks = tsi.ReadLine
 

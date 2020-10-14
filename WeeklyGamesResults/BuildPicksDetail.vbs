@@ -37,7 +37,7 @@ InCount  = 0
  Set fs = CreateObject("Scripting.FileSystemObject")
 
  Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_pool\WeeklyGamesResults\emailPicks", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week3Picks", ForAppending, True)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week5Picks", ForAppending, True)
 
 Do Until tsi.AtEndOfStream
 
@@ -101,5 +101,5 @@ Do Until tsi.AtEndOfStream
 
 Loop
 
-WScript.Echo "Lines in s " & InCount
+WScript.Echo "Lines in is " & InCount
 WScript.Echo "Players Out is " & OutCount 

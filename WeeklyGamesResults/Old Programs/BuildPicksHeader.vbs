@@ -43,46 +43,15 @@ OutLine3 = "PLAYER                                                              
 
  Set fs = CreateObject("Scripting.FileSystemObject")
 
- Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\code\homework\football_1\src\data\Week7.js", ForReading)
- Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week7Picks", ForWriting, True)
-
-InAwayTeam = tsi.ReadLine
-InAwayTeam = tsi.ReadLine
+ Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Data\Week5TeamNames", ForReading)
+ Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week5Picks", ForWriting, True)
 
 Do Until tsi.AtEndOfStream
 
-	SplitCount = 0
-	a=Split(InAwayTeam,":")
-	for each x in a
-		SplitCount = SplitCount + 1 
-		'OutLine = x & " " & SplitCount
-		if SplitCount = 3 Then 
-			HoldHome = x
-		End If	
-		if SplitCount = 4 Then 
-			HoldAway = x
-		End If	
-	next
-
-	SplitCount = 0
-	b=Split(HoldHome,"""")
-	for each x in b
-		SplitCount = SplitCount + 1 
-		if SplitCount = 2 Then
-			InHomeTeam = x 
-		End If	
-	next
-
-	SplitCount = 0
-	c=Split(HoldAway,"""")
-	for each x in c
-		SplitCount = SplitCount + 1 
-		if SplitCount = 2 Then
-			InAwayTeam = x 
-		End If	
-	next
-
-	InCount = InCount + 2
+	InAwayTeam = tsi.ReadLine
+	InCount = InCount + 1
+	InHomeTeam = tsi.ReadLine
+	InCount = InCount + 1
 	GameNum = GameNum + 1
 
 	ArrayCounter = 0
@@ -125,14 +94,6 @@ Do Until tsi.AtEndOfStream
 
 	
 	OutCount = OutCount + 1
-
-	InAwayTeam = tsi.ReadLine
-	LenOfInput = Len(InAwayTeam)
-
-	'if LenOfInput < 10 Then
-	'	InAwayTeam = tsi.ReadLine
-	'End If	
-
 	
 Loop
 

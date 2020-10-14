@@ -2,6 +2,23 @@ Dim tsi, InCount
 Dim fs, tso, OutLine, OutLine2, OutCount
 Dim GameNum
 
+Dim ArrayCounter
+Dim TeamNameList
+	TeamNameList = Array("Cowboys", "Bears", "Panthers", "Falcons", "Ravens", "Bills", "Bengals", "Browns", "Redskins", "Packers", "Broncos", _
+						 "Texans", "Lions", "Vikings", "49ers", "Saints", "Dolphins", "Jets", "Colts", "Buccaneers", "Chargers", "Jaguars", _
+						 "Steelers", "Cardinals", "Chiefs", "Patriots", "Titans", "Raiders", "Seahawks", "Rams", "Giants", "Eagles")
+
+
+Dim TeamNameShort  
+	TeamNameShort = Array("DAL", "CHI", "CAR", "ATL", "BAL", "BUF", "CIN", "CLE", "WAS", "GB ", "DEN", _
+						  "HOU", "DET", "MIN", "SF ", "NO ", "MIA", "NYJ", "IND", "TB ", "LAC", "JAC", _
+						  "PIT", "ARI", "KC ", "NE ", "TEN", "LV ", "SEA", "LAR", "NYG", "PHI")
+
+Dim HomeArray(16)	
+Dim AwayArray(16)					  
+
+
+
 Const ForReading         = 1
 Const ForWriting         = 2
 Const ForAppending       = 8
@@ -26,7 +43,7 @@ OutLine3 = "PLAYER                                                              
 
  Set fs = CreateObject("Scripting.FileSystemObject")
 
- Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\code\homework\football_1\src\data\Week6.js", ForReading)
+ Set tsi = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Data\Week6TeamNames", ForReading)
  Set tso = fs.OpenTextFile("C:\Users\jimde\Desktop\hold_folder_react_app\Football_Pool\WeeklyGamesResults\Week6Schedule", ForWriting, True)
 
 OutLine = "                    Welcome to week 6 " 
@@ -38,51 +55,17 @@ tso.writeLine OutLine
 OutLine = "" 
 tso.writeLine OutLine
 
-InAwayTeam = tsi.ReadLine
-
 
 Do Until tsi.AtEndOfStream
 
 	InAwayTeam = tsi.ReadLine
-
-	SplitCount = 0
-	a=Split(InAwayTeam,":")
-	for each x in a
-		SplitCount = SplitCount + 1 
-		'OutLine = x & " " & SplitCount
-		if SplitCount = 3 Then 
-			HoldHome = x
-		End If	
-		if SplitCount = 4 Then 
-			HoldAway = x
-		End If	
-	next
-
-	SplitCount = 0
-	b=Split(HoldHome,"""")
-	for each x in b
-		SplitCount = SplitCount + 1 
-		if SplitCount = 2 Then
-			HoldHome = x 
-		End If	
-	next
-
-	SplitCount = 0
-	c=Split(HoldAway,"""")
-	for each x in c
-		SplitCount = SplitCount + 1 
-		if SplitCount = 2 Then
-			HoldAway = x 
-		End If	
-	next
-
-
 	InCount = InCount + 1
+	InHomeTeam = tsi.ReadLine
 	InCount = InCount + 1
 	GameNum = GameNum + 1
 
 	'WScript.Echo Len(InHomeTeam)
-	Disp = Len(HoldAway)
+	Disp = Len(InAwayTeam)
 	Diff = 12 - Disp
 	Filler = String(Diff," ")
 
@@ -92,20 +75,13 @@ Do Until tsi.AtEndOfStream
 		OutLine = "      Game " & GameNum & " " 
 	End If	
 
-	If disp > 0 Then
+	OutLine = OutLine & "____ " & InAwayTeam & Filler & " @ " & InHomeTeam & " ____"  
+	tso.writeLine OutLine
 
-		OutLine = OutLine & "____ " & HoldAway & Filler & " @ " & HoldHome & " ____"  
-		tso.writeLine OutLine
-
-		OutLine = " "
-		tso.writeLine OutLine
+	OutLine = " "
+	tso.writeLine OutLine
 	
-		OutCount = OutCount + 1
-
-	End If
-
-	HoldHome = ""
-	HoldAway = "" 
+	OutCount = OutCount + 1
 	
 Loop
 
